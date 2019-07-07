@@ -52,7 +52,7 @@ if (el > 5) return true;
 if (el < 5) return false;   
 };
 
-const ResFunction = every([1], callbackfunc);
+const ResFunction = every([6], callbackfunc);
 console.log(ResFunction);
 
 // Destructurization. Task №1
