@@ -40,19 +40,17 @@ function every (arrOfNumb , callback){
 
   for (let i = 0; i < arrOfNumb.length; i++) {
 		const callbackRes = callback(arrOfNumb[i], i , arrOfNumb);
-			if (callbackRes) {
         res.push(callbackRes);
       }
-  }
   return res;
 };
 
 function callbackfunc (el, index, arr) {
-if (el > 5) return true;
+if (el >= 5) return true;
 if (el < 5) return false;   
 };
 
-const ResFunction = every([6], callbackfunc);
+const ResFunction = every([1,2,3,4,5,6,7,8], callbackfunc);
 console.log(ResFunction);
 
 // Destructurization. Task №1
