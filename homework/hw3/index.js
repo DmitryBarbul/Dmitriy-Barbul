@@ -31,13 +31,34 @@ console.log(object.increasedHeight());
 //This task №4
 
 const numerator = {
+ 
   value: 1,
-  double: function () {return this.value * 2 },
-  plusOne: function () {return this.value + 1 },
-  minusOne: function () {return this.value - 1 },
+  double: function () { this.value *= 2; return this },
+  plusOne: function () { this.value++; return this },
+  minusOne: function () { this.value--; return this },
 }
-// console.log(numerator.double().plusOne().plusOne().minusOne())
-// console.log(numerator.value)
+
+numerator.double().plusOne().plusOne().minusOne();
+console.log(numerator.value);
+
+//This task №5
+const prod = {
+ 
+  price: 100,
+  quantity: 10,
+  allProductsPrice: function () { return this.price * this.quantity },
+};
+
+console.log(prod.allProductsPrice());
+
+//This task №6
+const newProduct = {
+ 
+  price: 250,
+  quantity: 12,
+}
+
+console.log(prod.allProductsPrice.call(newProduct))
 
 //This task №7
 let sizes = {width: 5, height: 10},
