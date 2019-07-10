@@ -4,7 +4,7 @@ const rectangle = {
   height: 20, 
   getSquare: function () { return this.width * this.height }
 };
-let res = rectangle.getSquare.bind(rectangle)
+let res = rectangle.getSquare.bind(rectangle);
 console.log(res());
 
 //This task №2
@@ -25,40 +25,37 @@ console.log(product.getPriceWithDiscount());
 const object = {
   height:10,
   increasedHeight: function() {return this.height +1}
-}
+};
 console.log(object.increasedHeight());
 
 //This task №4
 
 const numerator = {
- 
   value: 1,
   double: function () { this.value *= 2; return this },
   plusOne: function () { this.value++; return this },
   minusOne: function () { this.value--; return this },
-}
+};
 
 numerator.double().plusOne().plusOne().minusOne();
 console.log(numerator.value);
 
 //This task №5
 const prod = {
- 
   price: 100,
   quantity: 10,
-  allProductsPrice: function () { return this.price * this.quantity },
+  allProductsPrice: function () { return this.price * this.quantity }
 };
 
 console.log(prod.allProductsPrice());
 
 //This task №6
 const newProduct = {
- 
   price: 250,
   quantity: 12,
 }
 
-console.log(prod.allProductsPrice.call(newProduct))
+console.log(prod.allProductsPrice.call(newProduct));
 
 //This task №7
 let sizes = {width: 5, height: 10},
@@ -72,7 +69,7 @@ let element = {
   getHeight: function () { return this.height }
 };
 
-let getElementHeight = element.getHeight.bind(element)
+let getElementHeight = element.getHeight.bind(element);
 console.log(getElementHeight());
 
 //Array methods task №1
@@ -88,7 +85,7 @@ console.log(result1);
 //Array methods task №2
 array2 = [12, 4, 50, 1, 0, 18, 40];
 let result2 = array2.some(number => number == 0);
-console.log(result2)
+console.log(result2);
 
 //Array methods task №3
 array3 = ['yes', 'hello', 'no', 'easycode', 'what'];
@@ -104,7 +101,7 @@ array4.sort((x, y) => x.index - y.index);
 const result4 = array4.reduce((previousValue, currentItem) => {
     return previousValue + currentItem.char;
 }, ''); 
-console.log(result4)
+console.log(result4);
 
 //Array methods task №5
 array5 = [  [14, 45],  [1],  ['a', 'c', 'd']  ] ;
@@ -137,5 +134,5 @@ function filterProducts(products, minPrice, maxPrice) {
   return sortProducts;
 }
 
-console.log(filterProducts(products, 15, 30))
+console.log(filterProducts(products, 15, 30));
 
