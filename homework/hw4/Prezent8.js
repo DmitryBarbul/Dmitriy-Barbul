@@ -4,6 +4,6 @@ btn.addEventListener('click', event => alert(event.target.getAttribute('data-tex
 
 //Event Task №2
 const getElement = document.getElementById('tag');
-document.addEventListener('click', function (elem) {
-  getElement.textContent = elem.target.tagName;
+document.addEventListener('click', function (event) {
+  getElement.textContent = event.target.tagName;
 });
