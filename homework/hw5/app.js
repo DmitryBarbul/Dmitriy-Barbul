@@ -1,14 +1,14 @@
 const tasks = [
   {
     _id: '5d2ca9e2e03d40b326596aa7',
-    completed: true,
+    completed: false,
     body:
       'Occaecat non ea quis occaecat ad culpa amet deserunt incididunt elit fugiat pariatur. Exercitation commodo culpa in veniam proident laboris in. Excepteur cupidatat eiusmod dolor consectetur exercitation nulla aliqua veniam fugiat irure mollit. Eu dolor dolor excepteur pariatur aute do do ut pariatur consequat reprehenderit deserunt.\r\n',
     title: 'Eu ea incididunt sunt consectetur fugiat non.',
   },
   {
     _id: '5d2ca9e29c8a94095c4e88e0',
-    completed: true,
+    completed: false,
     body:
       'Aliquip cupidatat ex adipisicing veniam do tempor. Lorem nulla adipisicing et esse cupidatat qui deserunt in fugiat duis est qui. Est adipisicing ipsum qui cupidatat exercitation. Cupidatat aliqua deserunt id deserunt excepteur nostrud culpa eu voluptate excepteur. Cillum officia proident anim aliquip. Dolore veniam qui reprehenderit voluptate non id anim.\r\n',
     title:
@@ -27,21 +27,13 @@ const tasks = [
   const form = document.forms['addTask'];
   const inputTitle = form.elements['title'];
   const inputBody = form.elements['body'];
-  
-  
-  const btnDone = document.createElement('button');
-  btnDone.textContent = 'Done tasks';
-  const allTasks = document.createElement('button')
-  allTasks.textContent = 'All tasks';
-  const buttonContainer = document.createElement('div');
-    buttonContainer.appendChild(allTasks);
-    buttonContainer.appendChild(btnDone);
-    tasksList.insertAdjacentElement('beforebegin',buttonContainer);
+  const mainTaskBtns = document.querySelector(".task-action");
 
     
   renderTasks();
   form.addEventListener('submit', onFormSubmitHandler);
   tasksList.addEventListener('click', handleClick);
+  mainTaskBtns.addEventListener('click', handleClick);
   const messageContainer = document.createElement('div');
   messageContainer.a
   messageContainer.classList.add('message-content');
@@ -74,6 +66,7 @@ const tasks = [
     );
     li.setAttribute('data-task-id', task._id);
 
+
     const span = document.createElement('span');
     span.textContent = task.title;
     span.style.fontWeight = 'bold';
@@ -96,7 +89,6 @@ const tasks = [
     li.appendChild(DoneBtn);
     li.appendChild(deleteBtn);
     li.appendChild(article);
-
     return li;
   }
 
@@ -111,6 +103,7 @@ const tasks = [
     }    
 
     const task = createNewTask(titleValue, bodyValue);
+    tasks.push(task)
     const listItem = listItemTemplate(task);
     tasksList.insertAdjacentElement('afterbegin', listItem);
     if (tasksList.childElementCount) {
@@ -152,14 +145,50 @@ const tasks = [
     if (!tasksList.childElementCount) {
         messageContainer.style.display = 'block'; 
     }
-  }
-  
-  function onDoneHandler({ target }){
-    if (target.classList.contains('success-btn')){
-      let taskItemd = target.parentElement;
-      taskItemd.style.backgroundColor = 'green';
+    if (target.classList.contains('done-btn')) {
+      let taskComp = target.parentElement;
+          let containerSrch = document.querySelector('ul');
+          for (let j = 0; j < containerSrch.children.length; j++) {
+            let li = containerSrch.children[j];
+            let taskElementId = li.getAttribute('data-task-id')
+            for (let i = 0; i < tasks.length; i++) {
+              if (tasks[i]._id === taskElementId) {
+                if (tasks[i].completed === false) {
+                  containerSrch.removeChild(li)
+                  j--;
+                }
+              }
+            }
+      } 
+    }
+    if (target.classList.contains('all-btn')) {
+      let listGroup = document.querySelector('.list-group');
+      for (let i = 0; i < listGroup.children.length; i++){
+      let li = listGroup.children[0];
+        listGroup.removeChild(li);
+        i--;
+        
+      
+      }
+      renderTasks()
+      
     }
   }
   
+  function onDoneHandler({ target }) {
+    if (target.classList.contains( 'success-btn')) {
+      let taskItemd = target.parentElement;
+      taskItemd.style.backgroundColor = 'green';
+      let taskElement = taskItemd.getAttribute('data-task-id');
+      for (let i = 0; i < tasks.length; i++) {
+        let taskId = tasks[i]._id;
+        if (taskId === taskElement) {
+          tasks[i].completed = true; 
+        }
+      }     
+    }
+    console.log(tasks);
+  }
+ 
   document.getElementsByClassName("alertMsg")[0].appendChild(messageContainer);
 })(tasks)
