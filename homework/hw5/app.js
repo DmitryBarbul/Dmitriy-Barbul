@@ -38,10 +38,10 @@ const tasks = [
   messageContainer.a
   messageContainer.classList.add('message-content');
   messageContainer.textContent = 'Nothing addeded';
-  if (!tasks.length) {
-    messageContainer.style.display = 'block'; 
-  } else {
-    messageContainer.style.display = 'none'; 
+    if (!tasks.length) {
+     messageContainer.style.display = 'block'; 
+    } else {
+     messageContainer.style.display = 'none'; 
   }
   
   
@@ -78,8 +78,6 @@ const tasks = [
     const DoneBtn = document.createElement('button');
     DoneBtn.textContent = 'Done';
     DoneBtn.classList.add('btn', 'btn-success', 'ml-auto', 'success-btn');
-    
-    
 
     const article = document.createElement('p');
     article.textContent = task.body;
@@ -103,11 +101,11 @@ const tasks = [
     }    
 
     const task = createNewTask(titleValue, bodyValue);
-    tasks.push(task)
+      tasks.push(task)
     const listItem = listItemTemplate(task);
     tasksList.insertAdjacentElement('afterbegin', listItem);
-    if (tasksList.childElementCount) {
-    messageContainer.style.display = 'none'; 
+      if (tasksList.childElementCount) {
+       messageContainer.style.display = 'none'; 
     }
     form.reset();
   }
@@ -121,7 +119,6 @@ const tasks = [
     }
 
     objOfTasks[newTask._id] = newTask;
-
     return { ...newTask };
   }
   function onDeleteHandler(e) {
@@ -145,6 +142,7 @@ const tasks = [
     if (!tasksList.childElementCount) {
         messageContainer.style.display = 'block'; 
     }
+    
     if (target.classList.contains('done-btn')) {
       let taskComp = target.parentElement;
           let containerSrch = document.querySelector('ul');
@@ -159,19 +157,17 @@ const tasks = [
                 }
               }
             }
-      } 
-    }
+          } 
+         }
+    
     if (target.classList.contains('all-btn')) {
       let listGroup = document.querySelector('.list-group');
-      for (let i = 0; i < listGroup.children.length; i++){
-      let li = listGroup.children[0];
+        for (let i = 0; i < listGroup.children.length; i++) {
+        let li = listGroup.children[0];
         listGroup.removeChild(li);
         i--;
-        
-      
       }
-      renderTasks()
-      
+      renderTasks();
     }
   }
   
