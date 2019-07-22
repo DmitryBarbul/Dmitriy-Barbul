@@ -154,11 +154,11 @@ const tasks = [
                 if (tasks[i].completed === false) {
                   containerSrch.removeChild(li)
                   j--;
-                }
-              }
-            }
-          } 
-         }
+        }
+      }
+    }
+  } 
+}
     
     if (target.classList.contains('all-btn')) {
       let listGroup = document.querySelector('.list-group');

@@ -14,7 +14,7 @@ const controls = [
   { name: 'color', type: 'color', label: 'Box-Background',  id: 'color--box-bg' , 'data-var': '--box-bg'},
   { name: 'color', type: 'color', label: 'Box-Text-Background', id: 'color--box-text-color',  'data-var': '--box-text-color'},
   { name: '', type: 'button', label: 'Set-custom-theme' }
-]
+];
 
 
 const themeSelect = document.getElementById('themes');
@@ -32,13 +32,13 @@ for (let i = 0; i < controls.length; i++) {
       input.setAttribute('data-var', controls[i]['data-var']);
 
 
-  divContainer.appendChild(input);
-  form.appendChild(divContainer);
-}else{
+      divContainer.appendChild(input);
+      form.appendChild(divContainer);
+  } else {
     let button = document.createElement('button');
-    button.setAttribute('type', 'submit')
-    button.textContent = 'Add new theme'
-    form.appendChild(button)
+    button.setAttribute('type', 'submit');
+    button.textContent = 'Add new theme';
+    form.appendChild(button);
  }
 }
 const inputThemeName = form.elements['themeName'];
