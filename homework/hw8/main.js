@@ -47,7 +47,9 @@ function renderUsers(users) {
           userPhone.textContent = `phone: ${userDetail.phone}`;
           const userWebsite = document.createElement('p');
           userWebsite.textContent = `website: ${userDetail.website}`;
-      
+
+          
+          divContainer.innerHTML = '';
           divContainer.appendChild(userName);
           divContainer.appendChild(userEmail);
           divContainer.appendChild(userPhone);
