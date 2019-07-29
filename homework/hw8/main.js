@@ -1,5 +1,6 @@
 const body = document.querySelector('body')
 const form = document.createElement('form')
+form.setAttribute("style", "padding-top : 50px")
 body.appendChild(form)
 
 function makeGetRequest(method, url, cb) {
@@ -31,13 +32,30 @@ function renderUsers(users) {
     
     form.appendChild(div)
   });
-  const allDivs = document.querySelectorAll('div')
-  console.log(allDivs)
 
-  // form.addEventListener('click', e => {
-  //   e.
-  // })
-
+    form.addEventListener('click', e => {
+      const divContainer = document.querySelector('.container')
+      // console.log(divContainer)
+      const userDetail = users.find(u => u.name === e.target.textContent);
+      // console.log(userDetail)
+      
+          const userName = document.createElement('p');
+          userName.textContent = userDetail.name;
+          const userEmail = document.createElement('p');
+          userEmail.textContent = `email: ${userDetail.email}`;
+          const userPhone = document.createElement('p');
+          userPhone.textContent = `phone: ${userDetail.phone}`;
+          const userWebsite = document.createElement('p');
+          userWebsite.textContent = `website: ${userDetail.website}`;
+      
+          divContainer.appendChild(userName);
+          divContainer.appendChild(userEmail);
+          divContainer.appendChild(userPhone);
+          divContainer.appendChild(userWebsite);
+         
+    
+  })
+  
 }
 
 
