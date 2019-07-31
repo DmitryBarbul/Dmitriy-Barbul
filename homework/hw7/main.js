@@ -93,4 +93,4 @@ const calculator = ( function() {
   }
 })();
 
-console.log(calculator.putNum(10).power(2).getValue())
+console.log(calculator.putNum(10).power(2).getValue());
