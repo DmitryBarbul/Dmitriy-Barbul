@@ -23,7 +23,7 @@ const mainFunction = ( function  (string) {
 function checkStr (value){
   if (typeof value === 'undefined') {value = ''}
   if (typeof value === 'number') {value + ''}
-    
+
   string = value;
     return string;
 }
@@ -93,4 +93,4 @@ const calculator = ( function() {
   }
 })();
 
-console.log(calculator.putNum(10).power(2).getValue())
+console.log(calculator.putNum(10).power(2).getValue());
