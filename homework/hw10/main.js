@@ -13,10 +13,10 @@ const postOptions = {
 
 const http = {  
   get() {
-  fetch(getUrl)
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(err => console.log(err))
+    fetch(getUrl)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
 },
   post() {
     fetch(postUrl, postOptions )

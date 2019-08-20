@@ -5,7 +5,7 @@ function myHttp() {
     request(url, options) {
       return Promise.resolve().then(() => {
         return fetch(url, options).then(response => {
-          if (response.status / 100 !== 2) {
+          if (Math.round(response.status / 100 !== 2)) {
             return Promise.reject(response);
           }
         return response.json();
