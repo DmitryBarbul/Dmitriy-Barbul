@@ -31,23 +31,19 @@ async function postUser(user) {
   }
 }
 
-
 async function renderUsers(arrOfPostedUsers) {
-  const arrOfUsername = arrOfPostedUsers.map(user => user.name).join(', ');
+  const userNameList = arrOfPostedUsers.map(user => user.name).join(', ');
 
   const userInfo = document.createElement('span');
-  userInfo.textContent = `created ${arrOfPostedUsers.length} users: ${arrOfUsername}`;
+  userInfo.textContent = `created ${arrOfPostedUsers.length} users: ${userNameList}`;
 
   document.body.appendChild(userInfo);
 }
-
 
 async function createUsers(arrayOfUsers) {
   const userPostResult = await Promise.all([...arrayOfUsers.map(postUser)]);
   console.log(userPostResult);
   renderUsers(userPostResult);
 }
-
-
 
 createUsers([{name: 'Vasya', age: 25}, {name: 'Petya', age: 40}]);

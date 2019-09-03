@@ -1,4 +1,3 @@
-
 const userList = document.createElement('ul');
 document.body.appendChild(userList);
 
@@ -19,8 +18,7 @@ function http() {
 
 const myHttp = http();
 
-
-async function getUsers() {
+async function getToDos() {
   try {
     const todos = await myHttp.request('https://jsonplaceholder.typicode.com/todos');
     return todos;
@@ -29,7 +27,6 @@ async function getUsers() {
     return Promise.reject(err);
   }
 }
-
 
 function renderTodos(arrOfTodos) {
   const usersCount = [];
@@ -51,6 +48,6 @@ function renderTodos(arrOfTodos) {
   }
 }
 
-getUsers()
+getToDos()
   .then(value => renderTodos(value))
   .catch(err => console.log(err))
